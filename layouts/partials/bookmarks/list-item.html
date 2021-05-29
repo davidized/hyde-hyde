@@ -1,0 +1,11 @@
+<div class="post-list__item type-bookmark">
+  {{ if eq .Params.bookmark_type "bookmark" }}
+  <span class="fa fa-bookmark" title="Bookmarked on {{ .Date }}"></span>
+  {{ else if eq .Params.bookmark_type "like" }}
+  <span class="fa fa-heart" title="Liked on {{ .Date }}"></span>
+  {{ end }}
+  <a href="{{ .Params.link }}">{{ .Title }}</a>
+  <span class="item__date">
+    {{ .Date.Format (.Site.Params.dateformat | default "Jan 02, 2006") }}
+  </span>
+</div>

@@ -1,0 +1,12 @@
+{{ $jquery := resources.Get "js/jquery-3.4.1.min.js" }}
+<script type="text/javascript" src="{{ $jquery.Permalink }}"></script>
+
+{{ $justifiedGallery := resources.Get "js/jquery.justifiedGallery.min.js" }}
+{{ $justifiedGalleryStyle := resources.Get "css/justifiedGallery.min.css" }}
+<link rel="stylesheet" href="{{ $justifiedGalleryStyle.RelPermalink }}" />
+<script src="{{ $justifiedGallery.RelPermalink }}"></script>
+
+{{ $colorbox := resources.Get "js/jquery.colorbox-min.js" }}
+{{ $colorboxStyle := resources.Get "css/colorbox.css" }}
+<link rel="stylesheet" href="{{ $colorboxStyle.RelPermalink }}" />
+<script src="{{ $colorbox.RelPermalink }}"></script>

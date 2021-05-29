@@ -11,6 +11,9 @@
       {{ else }}
         {{ .Scratch.Set "draftPage" false }}
       {{ end }}
+      {{ if eq .Type "bookmarks" }}
+        {{ partial "bookmarks/list-item.html" . }}
+      {{ else }}
       <div class="post-list__item">
         {{ if .Params.featured_image }}
           {{ $img := (.Resources.ByType "image").GetMatch .Params.featured_image }}
@@ -44,6 +47,7 @@
         {{ end }}
         </span>
         </div>
+        {{ end }}
         {{ .Scratch.Delete "draftPage" }}
      {{ end }}
   </div>

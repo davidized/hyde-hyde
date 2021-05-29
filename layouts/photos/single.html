@@ -1,0 +1,59 @@
+{{ define "header" }}
+    {{ partial "page-single/variables-init.html" . }}
+    {{ partial "header.html" . }}
+{{ end }}
+
+{{ define "content" }}
+    {{ $include_toc := .Params.include_toc}}
+    <article>
+      <header>
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.subtitle }}
+        <span class="post__subtitle">
+          {{.}}
+        </span>
+        {{ end }}
+        {{ partial "page-single/post-meta.html" . }}
+      </header>
+      <div class="post">
+        {{ .Content }}
+
+        <div id="gallery" class="justified-gallery">
+          {{ with .Resources.ByType "image" }}
+          {{ range . }}
+          <a href="{{ .RelPermalink }}">
+            <img src="{{ .Permalink }}" alt="{{ .Name }}" />
+            {{ if isset .Params "description" }}
+            <div class="jg-caption">
+              {{ .Params.Description }}
+            </div>
+            {{ end }}
+          </a>
+          {{ end }}
+          {{ end }}
+        </div>
+
+        <script type="text/javascript">
+          jQuery("#gallery").justifiedGallery({
+            rowHeight: 150
+            }).on('jg.complete', function() {
+              jQuery(this).find('a').colorbox({
+                maxWidth: '80%',
+                maxHeight: '80%',
+                opacity: 0.8,
+                transition: 'elastic',
+                current: ''
+                });
+              });
+          </script>
+      </div>
+      {{ partial "page-single/post-navigation.html" . }}
+      {{ partial "page-single/post-related.html" . }}
+      {{ partial "page-single/post-comment.html" . }}
+    </article>
+{{ end }}
+
+{{ define "footer" }}
+    {{ partial "page-single/footer.html" . }}
+    {{ partial "page-single/variables-deinit.html" . }}
+{{ end }}

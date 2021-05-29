@@ -8,6 +8,23 @@
 	margin-bottom: 3em;
 }
 
+.item__image {
+	position: relative;
+	color: $white;
+
+	.item__date {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		font-size: 75%;
+		line-height: 1.25;
+		color: inherit;
+		background-color: rgba(0, 0, 0, .5);
+		padding: 0 2px;
+		border-radius: 1px;
+	}
+}
+
 .item__title--big {
 	display: block;
 	font-size: $item__title-big-font-size;
@@ -16,6 +33,23 @@
 
 .item__title--small {
 	font-size: 1rem;
+}
+
+.item__title--overlay {
+	font-size: $item__title-big-font-size;
+	line-height: 1.25;
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	background-color: rgba(0, 0, 0, .5);
+	padding: 0 5px;
+	border-radius: 1px;
+	a {
+		color: inherit;
+	}
+	a:hover {
+		border-bottom: none;
+	}
 }
 
 .item__date {
